@@ -1,25 +1,19 @@
 const aliceTumbling = [
-  { transform: 'rotate(0) scale(1)' },
-  { transform: 'rotate(360deg) scale(0)' }
+  { transform: 'rotate(0) scale(1)' },  
+  { transform: 'rotate(360deg) scale(0)' }  
 ];
-
 const aliceTiming = {
-  duration: 2000,
-  iterations: 1,
-  fill: 'forwards'
+  duration: 2000,  
+  iterations: 1, 
+  fill: 'forwards'  
 };
-
 const alice1 = document.querySelector("#alice1");
 const alice2 = document.querySelector("#alice2");
 const alice3 = document.querySelector("#alice3");
-function animateElement(element, nextElement) {
-  const animation = element.animate(aliceTumbling, aliceTiming); 
-  animation.onfinish = () => {
-    if (nextElement) {
-      animateElement(nextElement); 
-    }
+const animation1 = alice1.animate(aliceTumbling, aliceTiming);
+animation1.onfinish = () => {
+  const animation2 = alice2.animate(aliceTumbling, aliceTiming);
+  animation2.onfinish = () => {
+    alice3.animate(aliceTumbling, aliceTiming);
   };
-}
-
-animateElement(alice1, alice2);
-animateElement(alice2, alice3);
+};
