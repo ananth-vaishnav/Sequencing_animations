@@ -21,4 +21,4 @@ function animateElement(element, nextElement) {
   };
 }
 
-animateElement(alice1, alice2);
+animateElement(alice1, alice2, alice3);
