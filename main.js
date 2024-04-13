@@ -12,10 +12,13 @@ const aliceTiming = {
 const alice1 = document.querySelector("#alice1");
 const alice2 = document.querySelector("#alice2");
 const alice3 = document.querySelector("#alice3");
-const animation1 = alice1.animate(aliceTumbling, aliceTiming);
-animation1.onfinish = () => {
-  const animation2 = alice2.animate(aliceTumbling, aliceTiming);
-  animation2.onfinish = () => {
-    alice3.animate(aliceTumbling, aliceTiming);
+function animateElement(element, nextElement) {
+  const animation = element.animate(aliceTumbling, aliceTiming); 
+  animation.onfinish = () => {
+    if (nextElement) {
+      animateElement(nextElement); 
+    }
   };
-};
+}
+
+animateElement(alice1, alice2);
